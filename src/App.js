@@ -140,7 +140,7 @@ function App() {
             Featured Products
           </Typography>
         </Stack>
-        <Stack paddingX="100px">
+        <Stack paddingX={isLg ? "20px" : "100px"}>
           <Stack
             width={isLg ? "100%" : "80%"}
             margin="auto"
