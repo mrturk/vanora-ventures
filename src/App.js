@@ -85,17 +85,13 @@ function App() {
     );
   };
   const slidePrev = () => {
-    console.log(activeIndex);
     if (activeIndex - 1 >= 0) {
       setActiveIndex(activeIndex - 1);
     }
   };
   const slideNext = () => {
     //apiden gelen datasayısına göredinamik değiştirilebilir
-    console.log(activeIndex);
-    if (
-      isMd ? activeIndex + 1 < items.length : activeIndex + 1 < items.length - 2
-    ) {
+    if (isMd ? activeIndex + 1 < items.length : 1) {
       setActiveIndex(activeIndex + 1);
     }
   };
@@ -140,9 +136,9 @@ function App() {
             Featured Products
           </Typography>
         </Stack>
-        <Stack paddingX={isLg ? "20px" : "100px"}>
+        <Stack paddingX={isMd ? "20px" : "100px"}>
           <Stack
-            width={isLg ? "100%" : "80%"}
+            width={isMd ? "100%" : "80%"}
             margin="auto"
             position="relative"
           >
@@ -154,7 +150,7 @@ function App() {
               items={items}
               responsive={responsive}
             />
-            {!isLg && (
+            {!isMd && (
               <>
                 <Stack
                   sx={{ cursor: "pointer" }}
