@@ -12,7 +12,6 @@ const responsive = {
   568: { items: 2 },
   1024: { items: 3 },
 };
-
 const items = [
   <Stack paddingX="5px" justifyContent="center" alignItems="center">
     <VanoraCard />
@@ -86,12 +85,14 @@ function App() {
     );
   };
   const slidePrev = () => {
+    console.log(activeIndex);
     if (activeIndex - 1 >= 0) {
       setActiveIndex(activeIndex - 1);
     }
   };
   const slideNext = () => {
     //apiden gelen datasayısına göredinamik değiştirilebilir
+    console.log(activeIndex);
     if (
       isMd ? activeIndex + 1 < items.length : activeIndex + 1 < items.length - 2
     ) {
@@ -140,7 +141,11 @@ function App() {
           </Typography>
         </Stack>
         <Stack paddingX="100px">
-          <Stack position="relative">
+          <Stack
+            width={isLg ? "100%" : "80%"}
+            margin="auto"
+            position="relative"
+          >
             <AliceCarousel
               activeIndex={activeIndex}
               onSlideChanged={syncActiveIndex}
@@ -149,36 +154,40 @@ function App() {
               items={items}
               responsive={responsive}
             />
-            <Stack
-              sx={{ cursor: "pointer" }}
-              onClick={slideNext}
-              position="absolute"
-              right={isMd ? "-55px" : "-50px"}
-              top="30%"
-              width="48px"
-              height="48px"
-              justifyContent="center"
-              alignItems="center"
-              borderRadius="5px"
-              bgcolor="#400E03"
-            >
-              <RightArrowIcon />
-            </Stack>
-            <Stack
-              sx={{ cursor: "pointer" }}
-              onClick={slidePrev}
-              position="absolute"
-              left={isMd ? "-55px" : "-50px"}
-              top="30%"
-              width="48px"
-              height="48px"
-              borderRadius="5px"
-              justifyContent="center"
-              alignItems="center"
-              bgcolor="#400E03"
-            >
-              <LeftArrowIcon />
-            </Stack>
+            {!isLg && (
+              <>
+                <Stack
+                  sx={{ cursor: "pointer" }}
+                  onClick={slideNext}
+                  position="absolute"
+                  right="-70px"
+                  top="30%"
+                  width="48px"
+                  height="48px"
+                  justifyContent="center"
+                  alignItems="center"
+                  borderRadius="5px"
+                  bgcolor="#400E03"
+                >
+                  <RightArrowIcon />
+                </Stack>
+                <Stack
+                  sx={{ cursor: "pointer" }}
+                  onClick={slidePrev}
+                  position="absolute"
+                  left="-70px"
+                  top="30%"
+                  width="48px"
+                  height="48px"
+                  borderRadius="5px"
+                  justifyContent="center"
+                  alignItems="center"
+                  bgcolor="#400E03"
+                >
+                  <LeftArrowIcon />
+                </Stack>
+              </>
+            )}
           </Stack>
         </Stack>
       </Stack>
